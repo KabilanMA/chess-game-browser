@@ -200,7 +200,7 @@ function checkPawnPromotion(target) {
         var dialog = document.getElementById("dialog");
         dialog.style.display = "block";
     }
-    
+
 }
 
 function handleOption(option) {
@@ -209,14 +209,13 @@ function handleOption(option) {
     
     // Perform action based on the chosen option
     switch (option) {
-        case 'pawn':
-            break;
         case 'queen':
             playerColor = draggedElement.firstChild.getAttribute('class')
             var square = draggedElement.parentNode
             square.innerHTML = queen
             square.firstChild.setAttribute('draggable', true)
             square.firstChild.firstChild.classList.add(playerColor)
+            isCheck(true)
             break;
         case 'rook':
             playerColor = draggedElement.firstChild.getAttribute('class')
@@ -224,6 +223,7 @@ function handleOption(option) {
             square.innerHTML = rook
             square.firstChild.setAttribute('draggable', true)
             square.firstChild.firstChild.classList.add(playerColor)
+            isCheck(true)
             break;
         case 'knight':
             playerColor = draggedElement.firstChild.getAttribute('class')
@@ -231,6 +231,7 @@ function handleOption(option) {
             square.innerHTML = knight
             square.firstChild.setAttribute('draggable', true)
             square.firstChild.firstChild.classList.add(playerColor)
+            isCheck(true)
             break;
         case 'bishop':
             playerColor = draggedElement.firstChild.getAttribute('class')
@@ -238,9 +239,11 @@ function handleOption(option) {
             square.innerHTML = bishop
             square.firstChild.setAttribute('draggable', true)
             square.firstChild.firstChild.classList.add(playerColor)
+            isCheck(true)
             break;
         default:
-          console.log("Invalid option");
+            alert("Invalid Option")
+            console.log("Invalid option");
     }
   }
 
@@ -263,6 +266,12 @@ function checkIfValidMove(target, move) {
                 (startId+width-1===targetId && document.querySelector(`[square-id="${startId+width-1}"]`).firstChild) || 
                 (startId+width+1===targetId && document.querySelector(`[square-id="${startId+width+1}"]`).firstChild)
             ) {
+                if (target.firstChild) {
+                    if ((starterRow.includes(startId) && startId + width*2 === targetId) || (startId + width === targetId)) {
+                        return false
+                    }
+                    return true
+                }
                 return true
             }
             break

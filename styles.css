@@ -26,7 +26,7 @@ path {
 
 .piece {
     position: relative;
-    z-index: 9;
+    z-index: 1;
 }
 
 .light {
@@ -52,7 +52,7 @@ path {
 .dialog {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 7;
     left: 0;
     top: 0;
     width: 100%;
@@ -68,24 +68,29 @@ path {
   border: 1px solid #888;
   width: 40%;
   text-align: center;
+  z-index: auto;
 }
 
 .dialog-content h2 {
   margin-bottom: 20px;
+  z-index: auto;
 }
 
 .dialog-content ul {
   list-style-type: none;
   padding: 0;
+  z-index: auto;
 }
 
 .dialog-content li {
   margin-bottom: 10px;
+  z-index: auto;
 }
 
 .dialog-content a {
   text-decoration: none;
   color: #333;
+  z-index: auto;
 }
 
 .dialog-content a:hover {
